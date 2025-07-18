@@ -203,7 +203,7 @@ const Portfolio = () => {
     e.preventDefault();
 
     if (!validateEmail(formData.email)) {
-      setFormStatus("❌ Please enter a valid email address.");
+      setFormStatus(" Please enter a valid email address.");
       return;
     }
 
@@ -226,7 +226,7 @@ const Portfolio = () => {
       });
 
       if (response.ok) {
-        setFormStatus("✅ Message sent successfully!");
+        setFormStatus(" Message sent successfully!");
         setFormData({ name: "", email: "", message: "" });
       } else {
         const errorData = await response.json();
@@ -237,7 +237,7 @@ const Portfolio = () => {
         );
       }
     } catch (error) {
-      setFormStatus("❌ Error sending message. Please try again later.");
+      setFormStatus(" Error sending message. Please try again later.");
     }
   };
 
@@ -361,7 +361,7 @@ const Portfolio = () => {
               <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-1 rounded-2xl inline-block">
                 <div className="bg-slate-800 p-8 rounded-2xl">
                   <img
-                    src={avatar2}
+                    src={avatar3}
                     alt="Your Profile"
                     className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
                   />
