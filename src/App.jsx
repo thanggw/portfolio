@@ -30,10 +30,10 @@ import {
   FaTools,
 } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import web1 from "../public/images/web1.png";
-import web2 from "../public/images/web2.png";
-import gameTheoryImage from "../public/images/algorithm.png";
-import medicalBookingImage from "../public/images/medical.png";
+import web1 from "/images/web1.png";
+import web2 from "/images/web2.png";
+import gameTheoryImage from "/images/algorithm.png";
+import medicalBookingImage from "/images/medical.png";
 
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -286,7 +286,7 @@ const Portfolio = () => {
             <div className="w-40 h-40 mx-auto mb-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-1 overflow-hidden">
               {/* Thay thế phần này bằng thẻ <img> của bạn */}
               <img
-                src="../public/images/avatar.jpg"
+                src="/images/avatar.jpg"
                 alt="Vu Van Thang's Profile Picture"
                 className="w-full h-full object-cover rounded-full"
               />
@@ -358,7 +358,7 @@ const Portfolio = () => {
               <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-1 rounded-2xl inline-block">
                 <div className="bg-slate-800 p-8 rounded-2xl">
                   <img
-                    src="../public/images/avatar2.jpg"
+                    src="/images/avatar2.jpg"
                     alt="Your Profile"
                     className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
                   />
@@ -523,7 +523,7 @@ const Portfolio = () => {
             </div>
             <div className="md:w-2/5 flex items-center justify-center p-4">
               <img
-                src="../public/images/certificate.jpg"
+                src="/images/certificate.jpg"
                 alt="Description of your image"
                 className="max-w-full h-auto rounded-lg shadow-lg"
               />
