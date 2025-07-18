@@ -29,13 +29,12 @@ import {
   FaBug,
   FaTools,
 } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import web1 from "/images/web1.png";
 import web2 from "/images/web2.png";
 import gameTheoryImage from "/images/algorithm.png";
 import medicalBookingImage from "/images/medical.png";
 import certificateImg from "/images/certificate.png";
-import avatar from "/images/avatar.png";
 import avatar3 from "/images/avatar3.jpg";
 
 const Portfolio = () => {
@@ -401,7 +400,6 @@ const Portfolio = () => {
                     <motion.p
                       key="content"
                       initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.4 }}
