@@ -36,7 +36,7 @@ import gameTheoryImage from "/images/algorithm.png";
 import medicalBookingImage from "/images/medical.png";
 import certificateImg from "/images/certificate.png";
 import avatar from "/images/avatar.png";
-import avatar2 from "/images/avatar2.png";
+import avatar3 from "/images/avatar3.jpg";
 
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -156,7 +156,7 @@ const Portfolio = () => {
       company: "Hanoi University",
       period: "2022 - Present",
       description:
-        "Achieved GPA 7.5/10 in the Software Engineering program. Participated in many group projects, honing problem-solving and teamwork skills.",
+        "Achieved GPA 7.5/10 in the Information System program. Participated in many group projects, honing problem-solving and teamwork skills.",
       icon: <BookOpen size={20} className="text-white" />,
     },
     {
@@ -289,7 +289,7 @@ const Portfolio = () => {
             <div className="w-40 h-40 mx-auto mb-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-1 overflow-hidden">
               {/* Thay thế phần này bằng thẻ <img> của bạn */}
               <img
-                src={avatar}
+                src={avatar3}
                 alt="Vu Van Thang's Profile Picture"
                 className="w-full h-full object-cover rounded-full"
               />
