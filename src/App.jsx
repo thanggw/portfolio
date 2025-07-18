@@ -36,6 +36,7 @@ import gameTheoryImage from "/images/algorithm.png";
 import medicalBookingImage from "/images/medical.png";
 import certificateImg from "/images/certificate.png";
 import avatar3 from "/images/avatar3.jpg";
+import avatar2 from "/images/avatar2.png";
 
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -360,7 +361,7 @@ const Portfolio = () => {
               <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-1 rounded-2xl inline-block">
                 <div className="bg-slate-800 p-8 rounded-2xl">
                   <img
-                    src={avatar3}
+                    src={avatar2}
                     alt="Your Profile"
                     className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
                   />
