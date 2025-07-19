@@ -29,7 +29,7 @@ import {
   FaBug,
   FaTools,
 } from "react-icons/fa";
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import web1 from "/images/web1.png";
 import web2 from "/images/web2.png";
 import gameTheoryImage from "/images/algorithm.png";
@@ -312,7 +312,7 @@ const Portfolio = () => {
           </div>
           <div className="flex justify-center space-x-6 mb-12">
             <a
-              href="/Nguyen_Van_Hinh-Intern_BA.pdf"
+              href="/Vu_Van_Thang-Intern_BA.pdf"
               download="Vu_Van_Thang_BA_Intern.pdf"
               className="bg-purple-600 hover:bg-purple-700 px-8 py-3 rounded-full transition-all transform hover:scale-105"
             >
@@ -705,7 +705,7 @@ const Portfolio = () => {
       <footer className="bg-slate-900 py-8 text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-gray-400">
-            © 2024 Vu Van Thang. Made with ❤️ using React
+            © 2025 Vu Van Thang. Made with ❤️ using React
           </p>
         </div>
       </footer>
