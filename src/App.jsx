@@ -312,7 +312,7 @@ const Portfolio = () => {
           </div>
           <div className="flex justify-center space-x-6 mb-12">
             <a
-              href="/Vu_Van_Thang-Intern_BA.pdf"
+              href={`${import.meta.env.BASE_URL}Vu_Van_Thang-Intern_BA.pdf`}
               download="Vu_Van_Thang_BA_Intern.pdf"
               className="bg-purple-600 hover:bg-purple-700 px-8 py-3 rounded-full transition-all transform hover:scale-105"
             >
