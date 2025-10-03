@@ -37,7 +37,7 @@ import medicalBookingImage from "/images/medical.png";
 import certificateImg from "/images/certificate.png";
 import avatar2 from "/images/avatar3.jpg";
 import avatar from "/images/avatar2.png";
-
+import Intro from "./components/Intro";
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,6 +48,7 @@ const Portfolio = () => {
     message: "",
   });
   const [formStatus, setFormStatus] = useState("");
+  const [showIntro, setShowIntro] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -113,6 +114,15 @@ const Portfolio = () => {
 
   const projects = [
     {
+      title: "Online Medical Appointment Booking System",
+      description:
+        "Currently under development, this full-stack web application allows users to easily book medical appointments. It features a robust backend for managing schedules and a user-friendly frontend for seamless booking experience.",
+      image: medicalBookingImage,
+      technologies: ["Node.js", "Express.js", "MySQL", "ReactJs"],
+      github: "https://github.com/thanggw/BookingCare.git",
+      demo: "#",
+    },
+    {
       title: "E-commerce Platform",
       description:
         "Full-stack e-commerce solution with HTML, CSS, SpringBoot and MySQL integrated with real-time messaging using Web Socket and besides COD payment also integrated with VnPay payment gateway test environment, easy login via Google using oAuth2.",
@@ -137,15 +147,6 @@ const Portfolio = () => {
       image: gameTheoryImage,
       technologies: ["ReactJs", "SpringBoot", "SpringBoot"],
       github: "https://github.com/FitHanuSpecialSubject/GA-Application-Java",
-      demo: "#",
-    },
-    {
-      title: "Online Medical Appointment Booking System",
-      description:
-        "Currently under development, this full-stack web application allows users to easily book medical appointments. It features a robust backend for managing schedules and a user-friendly frontend for seamless booking experience.",
-      image: medicalBookingImage,
-      technologies: ["Node.js", "Express.js", "MySQL", "ReactJs"],
-      github: "#",
       demo: "#",
     },
   ];
@@ -240,226 +241,241 @@ const Portfolio = () => {
       setFormStatus(" Error sending message. Please try again later.");
     }
   };
+  const handleEnter = () => {
+    setShowIntro(false);
+  };
+  if (showIntro) {
+    return (
+      <AnimatePresence mode="wait">
+        <Intro onEnter={handleEnter} />
+      </AnimatePresence>
+    );
+  }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
-      {/* Navigation */}
-      <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          isScrolled ? "bg-slate-900/90 backdrop-blur-md" : "bg-transparent"
-        }`}
+    <AnimatePresence mode="wait">
+      <motion.div
+        key="main" // Key để Framer biết đây là component mới
+        initial={{ opacity: 0 }} // Animation khi enter
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }} // Animation khi exit (nếu cần quay lại)
+        transition={{ duration: 0.5 }}
+        className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Portfolio
+        {/* Navigation */}
+        <nav
+          className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+            isScrolled ? "bg-slate-900/90 backdrop-blur-md" : "bg-transparent"
+          }`}
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center py-4">
+              <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Portfolio
+              </div>
+              <div className="hidden md:flex space-x-8">
+                {[
+                  "home",
+                  "about",
+                  "skills",
+                  "projects",
+                  "experience",
+                  "contact",
+                ].map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => scrollToSection(item)}
+                    className={`capitalize hover:text-purple-400 transition-colors ${
+                      activeSection === item
+                        ? "text-purple-400"
+                        : "text-gray-300"
+                    }`}
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
             </div>
-            <div className="hidden md:flex space-x-8">
-              {[
-                "home",
-                "about",
-                "skills",
-                "projects",
-                "experience",
-                "contact",
-              ].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
-                  className={`capitalize hover:text-purple-400 transition-colors ${
-                    activeSection === item ? "text-purple-400" : "text-gray-300"
-                  }`}
+          </div>
+        </nav>
+
+        {/* Hero Section */}
+        <section
+          id="home"
+          className="min-h-screen flex items-center justify-center relative overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-800/20 to-pink-800/20"></div>
+          <div className="text-center z-10 max-w-4xl mx-auto px-4">
+            <div className="mb-8 mt-8">
+              <div className="w-40 h-40 mx-auto mb-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-1 overflow-hidden">
+                {/* Thay thế phần này bằng thẻ <img> của bạn */}
+                <img
+                  src={avatar2}
+                  alt="Vu Van Thang's Profile Picture"
+                  className="w-full h-full object-cover rounded-full"
+                />
+              </div>
+              <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent leading-loose">
+                Vu Van Thang
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-300 mb-8">
+                Business Analyst Intern
+              </p>
+              <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-12">
+                Hello and welcome to my portfolio! I am an enthusiastic and
+                analytical student, actively seeking a Business Analyst
+                internship to apply my academic knowledge and developed skills
+                to real-world projects. With a strong aptitude for logical
+                thinking, effective problem-solving, and a keen eagerness to
+                learn, I am keen to contribute to business growth and evolve
+                into a professional Business Analyst in the future.
+              </p>
+            </div>
+            <div className="flex justify-center space-x-6 mb-12">
+              <a
+                href={`${import.meta.env.BASE_URL}Vu_Van_Thang-Intern_BA.pdf`}
+                download="Vu_Van_Thang_BA_Intern.pdf"
+                className="bg-purple-600 hover:bg-purple-700 px-8 py-3 rounded-full transition-all transform hover:scale-105"
+              >
+                Download CV
+              </a>
+
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="border border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-8 py-3 rounded-full transition-all transform hover:scale-105"
+              >
+                Contact
+              </button>
+            </div>
+          </div>
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <ChevronDown size={32} className="text-purple-400" />
+          </div>
+        </section>
+
+        {/* About Section */}
+        <section id="about" className="py-20 bg-slate-800/50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Something about me
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto"></div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h3 className="text-2xl font-bold mb-6 text-purple-400">
+                  Myself
+                </h3>
+                <p className="text-gray-300 mb-6 leading-relaxed">
+                  My name is Vu Van Thang, and I am from Van Phuc, Ha Dong,
+                  Hanoi. I was born on November 06, 2004. I am currently
+                  pursuing my studies and am eager to learn and grow in
+                  everything I do. I enjoy exploring new experiences, meeting
+                  new people, and staying curious about the world around me. I
+                  believe in the power of perseverance and hard work, and I am
+                  always ready to take on new challenges. I value personal
+                  growth and look forward to the opportunities ahead in my
+                  journey.
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-1 rounded-2xl inline-block">
+                  <div className="bg-slate-800 p-8 rounded-2xl">
+                    <img
+                      src={avatar}
+                      alt="Your Profile"
+                      className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
+                    />
+                    <h4 className="text-xl font-bold mb-2">Vu Van Thang</h4>
+                    <p className="text-gray-400">Business Analyst Intern</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Skills Section */}
+        <section id="skills" className="py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Skills
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto"></div>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {skillCategories.map((skill, index) => (
+                <div
+                  key={index}
+                  onClick={() => toggleOpen(index)}
+                  className="cursor-pointer bg-slate-800/50 p-6 rounded-lg hover:bg-slate-800/70 transition-all transform hover:scale-105"
                 >
-                  {item}
-                </button>
+                  <div className="flex items-center mb-4">
+                    <skill.icon className="text-purple-400 mr-3" size={24} />
+                    <h3 className="text-xl font-bold">{skill.name}</h3>
+                  </div>
+
+                  <AnimatePresence>
+                    {openIndex === index && (
+                      <motion.p
+                        key="content"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="text-gray-300 text-sm overflow-hidden"
+                      >
+                        {skill.description}
+                      </motion.p>
+                    )}
+                  </AnimatePresence>
+                </div>
               ))}
             </div>
           </div>
-        </div>
-      </nav>
+        </section>
 
-      {/* Hero Section */}
-      <section
-        id="home"
-        className="min-h-screen flex items-center justify-center relative overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-800/20 to-pink-800/20"></div>
-        <div className="text-center z-10 max-w-4xl mx-auto px-4">
-          <div className="mb-8 mt-8">
-            <div className="w-40 h-40 mx-auto mb-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-1 overflow-hidden">
-              {/* Thay thế phần này bằng thẻ <img> của bạn */}
-              <img
-                src={avatar2}
-                alt="Vu Van Thang's Profile Picture"
-                className="w-full h-full object-cover rounded-full"
-              />
+        {/* Projects Section */}
+        <section id="projects" className="py-20 bg-slate-800/50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Projects
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto"></div>
             </div>
-            <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent leading-loose">
-              Vu Van Thang
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8">
-              Business Analyst Intern
-            </p>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-12">
-              Hello and welcome to my portfolio! I am an enthusiastic and
-              analytical student, actively seeking a Business Analyst internship
-              to apply my academic knowledge and developed skills to real-world
-              projects. With a strong aptitude for logical thinking, effective
-              problem-solving, and a keen eagerness to learn, I am keen to
-              contribute to business growth and evolve into a professional
-              Business Analyst in the future.
-            </p>
-          </div>
-          <div className="flex justify-center space-x-6 mb-12">
-            <a
-              href={`${import.meta.env.BASE_URL}Vu_Van_Thang-Intern_BA.pdf`}
-              download="Vu_Van_Thang_BA_Intern.pdf"
-              className="bg-purple-600 hover:bg-purple-700 px-8 py-3 rounded-full transition-all transform hover:scale-105"
-            >
-              Download CV
-            </a>
-
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="border border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white px-8 py-3 rounded-full transition-all transform hover:scale-105"
-            >
-              Contact
-            </button>
-          </div>
-        </div>
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown size={32} className="text-purple-400" />
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-20 bg-slate-800/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Something about me
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto"></div>
-          </div>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="text-2xl font-bold mb-6 text-purple-400">
-                Myself
-              </h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                My name is Vu Van Thang, and I am from Van Phuc, Ha Dong, Hanoi.
-                I was born on November 06, 2004. I am currently pursuing my
-                studies and am eager to learn and grow in everything I do. I
-                enjoy exploring new experiences, meeting new people, and staying
-                curious about the world around me. I believe in the power of
-                perseverance and hard work, and I am always ready to take on new
-                challenges. I value personal growth and look forward to the
-                opportunities ahead in my journey.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-1 rounded-2xl inline-block">
-                <div className="bg-slate-800 p-8 rounded-2xl">
-                  <img
-                    src={avatar}
-                    alt="Your Profile"
-                    className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
-                  />
-                  <h4 className="text-xl font-bold mb-2">Vu Van Thang</h4>
-                  <p className="text-gray-400">Business Analyst Intern</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section id="skills" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Skills
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto"></div>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {skillCategories.map((skill, index) => (
-              <div
-                key={index}
-                onClick={() => toggleOpen(index)}
-                className="cursor-pointer bg-slate-800/50 p-6 rounded-lg hover:bg-slate-800/70 transition-all transform hover:scale-105"
-              >
-                <div className="flex items-center mb-4">
-                  <skill.icon className="text-purple-400 mr-3" size={24} />
-                  <h3 className="text-xl font-bold">{skill.name}</h3>
-                </div>
-
-                <AnimatePresence>
-                  {openIndex === index && (
-                    <motion.p
-                      key="content"
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.4 }}
-                      className="text-gray-300 text-sm overflow-hidden"
-                    >
-                      {skill.description}
-                    </motion.p>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className="py-20 bg-slate-800/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Projects
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto"></div>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                className="bg-slate-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300"
-              >
-                <div className="h-48 bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-purple-400">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-300 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {projects.map((project, index) => (
+                <div
+                  key={index}
+                  className="bg-slate-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300"
+                >
+                  <div className="h-48 bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <div className="flex space-x-4">
-                    {/* Chỉ hiển thị thông báo cho project thứ 4 (index 3) */}
-                    {index === 3 && project.github === "#" ? (
-                      <span className="flex items-center text-gray-500 text-sm italic">
-                        Code is being completed, please come back later!
-                      </span>
-                    ) : (
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-2 text-purple-400">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-300 mb-4">{project.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-sm"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex space-x-4">
                       <a
                         href={project.github}
                         className="flex items-center text-gray-400 hover:text-purple-400 transition-colors"
@@ -469,247 +485,251 @@ const Portfolio = () => {
                         <Github size={16} className="mr-2" />
                         Code
                       </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section id="experience" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 md:text-left">
-            {" "}
-            {/* Thêm md:text-left để căn trái trên màn hình lớn hơn */}
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Education & Achievements
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto md:mx-0"></div>{" "}
-            {/* Căn trái thanh gạch dưới */}
-          </div>
-          <div className="flex flex-col md:flex-row gap-8">
-            {" "}
-            {/* Sử dụng flexbox để chia 2 cột */}
-            <div className="md:w-3/5">
-              {" "}
-              {/* Cột trái cho Education & Achievements */}
-              {education.map((item, index) => (
-                <div key={index} className="relative mb-12 last:mb-0">
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-6">
-                      {item.icon}
-                    </div>
-                    <div className="flex-1 bg-slate-800/50 p-6 rounded-lg">
-                      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                        <h3 className="text-xl font-bold text-purple-400">
-                          {item.title}
-                        </h3>
-                        <span className="text-gray-400 text-sm">
-                          {item.period}
-                        </span>
-                      </div>
-                      <h4 className="text-lg font-semibold mb-2">
-                        {item.company}
-                      </h4>
-                      <p className="text-gray-300">{item.description}</p>
                     </div>
                   </div>
-                  {index < education.length - 1 && (
-                    <div className="absolute left-6 top-12 w-0.5 h-full bg-gradient-to-b from-purple-400 to-pink-400"></div> /* Điều chỉnh height thành h-full để đường kẻ dài hơn */
-                  )}
                 </div>
               ))}
             </div>
-            <div className="md:w-2/5 flex items-center justify-center p-4">
-              <img
-                src={certificateImg}
-                alt="Description of your image"
-                className="max-w-full h-auto rounded-lg shadow-lg"
-              />
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-slate-800/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Contact
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto"></div>
-          </div>
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-2xl font-bold mb-6 text-purple-400">
-                Let's connect!
-              </h3>
-              <p className="text-gray-300 mb-8">
-                I'm always open to discussing new collaboration opportunities or
-                interesting projects. Feel free to contact me!
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <Mail className="text-purple-400 mr-4" size={20} />
-                  <span className="text-gray-300">
-                    thangvuvan0611@gmail.com
-                  </span>
-                </div>
-                <div className="flex items-center">
-                  <Phone className="text-purple-400 mr-4" size={20} />
-                  <span className="text-gray-300">+84 814 134 634</span>
-                </div>
-                <div className="flex items-center">
-                  <MapPin className="text-purple-400 mr-4" size={20} />
-                  <span className="text-gray-300">
-                    Van Phuc, Ha Dong, Ha Noi
-                  </span>
-                </div>
+        {/* Experience Section */}
+        <section id="experience" className="py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16 md:text-left">
+              {" "}
+              {/* Thêm md:text-left để căn trái trên màn hình lớn hơn */}
+              <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Education & Achievements
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto md:mx-0"></div>{" "}
+              {/* Căn trái thanh gạch dưới */}
+            </div>
+            <div className="flex flex-col md:flex-row gap-8">
+              {" "}
+              {/* Sử dụng flexbox để chia 2 cột */}
+              <div className="md:w-3/5">
+                {" "}
+                {/* Cột trái cho Education & Achievements */}
+                {education.map((item, index) => (
+                  <div key={index} className="relative mb-12 last:mb-0">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-6">
+                        {item.icon}
+                      </div>
+                      <div className="flex-1 bg-slate-800/50 p-6 rounded-lg">
+                        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                          <h3 className="text-xl font-bold text-purple-400">
+                            {item.title}
+                          </h3>
+                          <span className="text-gray-400 text-sm">
+                            {item.period}
+                          </span>
+                        </div>
+                        <h4 className="text-lg font-semibold mb-2">
+                          {item.company}
+                        </h4>
+                        <p className="text-gray-300">{item.description}</p>
+                      </div>
+                    </div>
+                    {index < education.length - 1 && (
+                      <div className="absolute left-6 top-12 w-0.5 h-full bg-gradient-to-b from-purple-400 to-pink-400"></div> /* Điều chỉnh height thành h-full để đường kẻ dài hơn */
+                    )}
+                  </div>
+                ))}
               </div>
-              <div className="flex space-x-4 mt-8">
-                <a
-                  href="https://github.com/thanggw"
-                  className="bg-slate-700 hover:bg-purple-600 p-3 rounded-full transition-all transform hover:scale-110"
-                >
-                  <Github size={20} />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/th%C4%83ng-v%C5%A9-v%C4%83n-3a4282374/"
-                  className="bg-slate-700 hover:bg-purple-600 p-3 rounded-full transition-all transform hover:scale-110"
-                >
-                  <Linkedin size={20} />
-                </a>
-                <a
-                  href="https://www.facebook.com/thang.vuvan.061104?locale=vi_VN"
-                  className="bg-slate-700 hover:bg-purple-600 p-3 rounded-full transition-all transform hover:scale-110"
-                >
-                  <Facebook size={20} />
-                </a>
+              <div className="md:w-2/5 flex items-center justify-center p-4">
+                <img
+                  src={certificateImg}
+                  alt="Description of your image"
+                  className="max-w-full h-auto rounded-lg shadow-lg"
+                />
               </div>
             </div>
+          </div>
+        </section>
 
-            <form
-              onSubmit={handleSubmit}
-              className="bg-slate-800 p-8 rounded-lg"
-            >
-              <div className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Name
-                  </label>
+        {/* Contact Section */}
+        <section id="contact" className="py-20 bg-slate-800/50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Contact
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto"></div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-12">
+              <div>
+                <h3 className="text-2xl font-bold mb-6 text-purple-400">
+                  Let's connect!
+                </h3>
+                <p className="text-gray-300 mb-8">
+                  I'm always open to discussing new collaboration opportunities
+                  or interesting projects. Feel free to contact me!
+                </p>
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <Mail className="text-purple-400 mr-4" size={20} />
+                    <span className="text-gray-300">
+                      thangvuvan0611@gmail.com
+                    </span>
+                  </div>
+                  <div className="flex items-center">
+                    <Phone className="text-purple-400 mr-4" size={20} />
+                    <span className="text-gray-300">+84 814 134 634</span>
+                  </div>
+                  <div className="flex items-center">
+                    <MapPin className="text-purple-400 mr-4" size={20} />
+                    <span className="text-gray-300">
+                      Van Phuc, Ha Dong, Ha Noi
+                    </span>
+                  </div>
+                </div>
+                <div className="flex space-x-4 mt-8">
+                  <a
+                    href="https://github.com/thanggw"
+                    className="bg-slate-700 hover:bg-purple-600 p-3 rounded-full transition-all transform hover:scale-110"
+                  >
+                    <Github size={20} />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/th%C4%83ng-v%C5%A9-v%C4%83n-3a4282374/"
+                    className="bg-slate-700 hover:bg-purple-600 p-3 rounded-full transition-all transform hover:scale-110"
+                  >
+                    <Linkedin size={20} />
+                  </a>
+                  <a
+                    href="https://www.facebook.com/thang.vuvan.061104?locale=vi_VN"
+                    className="bg-slate-700 hover:bg-purple-600 p-3 rounded-full transition-all transform hover:scale-110"
+                  >
+                    <Facebook size={20} />
+                  </a>
+                </div>
+              </div>
+
+              <form
+                onSubmit={handleSubmit}
+                className="bg-slate-800 p-8 rounded-lg"
+              >
+                <div className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg focus:outline-none focus:border-purple-400 text-white"
+                      placeholder="Enter your name"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg focus:outline-none focus:border-purple-400 text-white"
+                      placeholder="Enter your email"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                      Message
+                    </label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      rows={5}
+                      required
+                      className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg focus:outline-none focus:border-purple-400 text-white"
+                      placeholder="Enter your message"
+                    ></textarea>
+                  </div>
+
                   <input
                     type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg focus:outline-none focus:border-purple-400 text-white"
-                    placeholder="Enter your name"
+                    name="_gotcha"
+                    style={{ display: "none" }}
                   />
-                </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg focus:outline-none focus:border-purple-400 text-white"
-                    placeholder="Enter your email"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    rows={5}
-                    required
-                    className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg focus:outline-none focus:border-purple-400 text-white"
-                    placeholder="Enter your message"
-                  ></textarea>
-                </div>
-
-                <input type="text" name="_gotcha" style={{ display: "none" }} />
-
-                <button
-                  type="submit"
-                  disabled={formStatus === "Sending..."}
-                  className={`w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 py-3 rounded-lg font-medium transition-all transform hover:scale-105 ${
-                    formStatus === "Sending..."
-                      ? "opacity-70 cursor-not-allowed"
-                      : ""
-                  }`}
-                >
-                  {formStatus === "Sending..." ? (
-                    <span className="flex items-center justify-center">
-                      <svg
-                        className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                        ></circle>
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                        ></path>
-                      </svg>
-                      Sending...
-                    </span>
-                  ) : (
-                    "Send Message"
-                  )}
-                </button>
-
-                {formStatus && (
-                  <p
-                    className={`text-center mt-2 text-sm ${
-                      formStatus.includes("✅")
-                        ? "text-green-400"
-                        : formStatus.includes("❌")
-                        ? "text-red-400"
-                        : "text-gray-400"
+                  <button
+                    type="submit"
+                    disabled={formStatus === "Sending..."}
+                    className={`w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 py-3 rounded-lg font-medium transition-all transform hover:scale-105 ${
+                      formStatus === "Sending..."
+                        ? "opacity-70 cursor-not-allowed"
+                        : ""
                     }`}
                   >
-                    {formStatus}
-                  </p>
-                )}
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
+                    {formStatus === "Sending..." ? (
+                      <span className="flex items-center justify-center">
+                        <svg
+                          className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
+                        </svg>
+                        Sending...
+                      </span>
+                    ) : (
+                      "Send Message"
+                    )}
+                  </button>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 py-8 text-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-gray-400">
-            © 2025 Vu Van Thang. Made with ❤️ using React
-          </p>
-        </div>
-      </footer>
-    </div>
+                  {formStatus && (
+                    <p
+                      className={`text-center mt-2 text-sm ${
+                        formStatus.includes("✅")
+                          ? "text-green-400"
+                          : formStatus.includes("❌")
+                          ? "text-red-400"
+                          : "text-gray-400"
+                      }`}
+                    >
+                      {formStatus}
+                    </p>
+                  )}
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="bg-slate-900 py-8 text-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-gray-400">
+              © 2025 Vu Van Thang. Made with ❤️ using React
+            </p>
+          </div>
+        </footer>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
