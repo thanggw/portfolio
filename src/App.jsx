@@ -319,16 +319,14 @@ const Portfolio = () => {
                 Vu Van Thang
               </h1>
               <p className="text-xl md:text-2xl text-gray-300 mb-8">
-                Business Analyst Intern
+                Software Development Intern
               </p>
               <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-12">
                 Hello and welcome to my portfolio! I am an enthusiastic and
-                analytical student, actively seeking a Business Analyst
-                internship to apply my academic knowledge and developed skills
-                to real-world projects. With a strong aptitude for logical
-                thinking, effective problem-solving, and a keen eagerness to
-                learn, I am keen to contribute to business growth and evolve
-                into a professional Business Analyst in the future.
+                passionate about building efficient web applications and
+                understanding how business processes translate into software
+                solutions. Experienced in both business analysis and fullstack
+                development using Java, Node.js, ReactJS, and MySQL.
               </p>
             </div>
             <div className="flex justify-center space-x-6 mb-12">
@@ -388,7 +386,7 @@ const Portfolio = () => {
                       className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
                     />
                     <h4 className="text-xl font-bold mb-2">Vu Van Thang</h4>
-                    <p className="text-gray-400">Business Analyst Intern</p>
+                    <p className="text-gray-400">Software Development Intern</p>
                   </div>
                 </div>
               </div>
