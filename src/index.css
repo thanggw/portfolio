@@ -1,3 +1,83 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --hue: 255;
+  --accent-hue: 165;
+
+  /* Neutrals: near-black tinted cool; surfaces elevate by lightness */
+  --bg: oklch(15.5% 0.01 var(--hue));
+  --surface: oklch(19% 0.012 var(--hue));
+  --surface-2: oklch(23% 0.014 var(--hue));
+  --line: oklch(29% 0.014 var(--hue));
+  --line-strong: oklch(38% 0.016 var(--hue));
+  --ink: oklch(95% 0.006 var(--hue));
+  --ink-2: oklch(80% 0.01 var(--hue));
+  --ink-3: oklch(66% 0.012 var(--hue));
+
+  /* Accent: mint from the McCE run button */
+  --accent: oklch(80% 0.13 var(--accent-hue));
+  --accent-strong: oklch(86% 0.12 var(--accent-hue));
+  --accent-ink: oklch(18% 0.03 var(--accent-hue));
+  --danger: oklch(72% 0.15 25);
+
+  --font-display: "Bricolage Grotesque", "Geist", system-ui, sans-serif;
+  --font-body: "Geist", system-ui, sans-serif;
+
+  --dur-press: 120ms;
+  --dur-state: 240ms;
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-press: 0ms;
+    --dur-state: 0ms;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  letter-spacing: 0.005em;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
