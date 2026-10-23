@@ -14,6 +14,7 @@ export default {
         accent: "var(--accent)",
         "accent-strong": "var(--accent-strong)",
         "accent-ink": "var(--accent-ink)",
+        "accent-soft": "var(--accent-soft)",
         danger: "var(--danger)",
       },
       fontFamily: {

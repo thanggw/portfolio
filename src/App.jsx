@@ -226,7 +226,7 @@ function Nav() {
   return (
     <header
       className={`sticky top-0 z-40 border-b transition-colors duration-state ease-out ${
-        scrolled || open ? "border-line bg-bg" : "border-transparent bg-bg"
+        scrolled || open ? "border-line bg-bg" : "border-transparent bg-accent-soft"
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-container items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -293,9 +293,9 @@ const fadeUp = {
 
 function Hero() {
   return (
-    <section id="top" className="mx-auto max-w-container px-4 sm:px-6 lg:px-8">
+    <section id="top" className="bg-accent-soft">
       <motion.div
-        className="grid min-h-[calc(100dvh-4rem)] items-center gap-12 py-16 md:grid-cols-12 md:gap-8 md:py-24"
+        className="mx-auto grid min-h-[calc(100dvh-4rem)] max-w-container items-center gap-12 px-4 py-16 sm:px-6 md:grid-cols-12 md:gap-8 md:py-24 lg:px-8"
         initial="hidden"
         animate="show"
         variants={{ show: { transition: { staggerChildren: 0.06 } } }}
@@ -334,7 +334,7 @@ function Hero() {
             alt="Portrait of Vu Van Thang"
             width="360"
             height="450"
-            className="aspect-[4/5] w-full max-w-[200px] rounded object-cover grayscale md:ml-auto md:max-w-[320px]"
+            className="aspect-[4/5] w-full max-w-[200px] rounded border-4 border-bg object-cover md:ml-auto md:max-w-[320px]"
           />
         </motion.figure>
       </motion.div>
@@ -409,7 +409,7 @@ function TechList({ items }) {
       {items.map((tech) => (
         <li
           key={tech}
-          className="rounded-sm border border-line px-2.5 py-1 text-sm leading-none text-ink-2"
+          className="rounded-sm bg-accent-soft px-2.5 py-1.5 text-sm leading-none text-ink-2"
         >
           {tech}
         </li>
@@ -706,7 +706,7 @@ function ContactForm() {
       <button
         type="submit"
         disabled={sending || !form.name || !form.email || !form.message}
-        className="inline-flex h-12 items-center gap-2 rounded-sm bg-ink px-6 font-medium text-bg transition-[transform,opacity] duration-press ease-out hover:-translate-y-0.5 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
+        className="inline-flex h-12 items-center gap-2 rounded-sm bg-accent px-6 font-medium text-accent-ink transition-[transform,background-color,opacity] duration-press ease-out hover:-translate-y-0.5 hover:bg-accent-strong active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:bg-accent"
       >
         {sending && <Loader2 size={18} className="animate-spin" aria-hidden="true" />}
         {sending ? "Sending" : "Send message"}

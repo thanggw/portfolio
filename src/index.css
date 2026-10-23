@@ -3,24 +3,25 @@
 @tailwind utilities;
 
 :root {
-  --hue: 255;
-  --accent-hue: 165;
+  --hue: 245;
+  --accent-hue: 248;
 
-  /* Neutrals: near-black tinted cool; surfaces elevate by lightness */
-  --bg: oklch(15.5% 0.01 var(--hue));
-  --surface: oklch(19% 0.012 var(--hue));
-  --surface-2: oklch(23% 0.014 var(--hue));
-  --line: oklch(29% 0.014 var(--hue));
-  --line-strong: oklch(38% 0.016 var(--hue));
-  --ink: oklch(95% 0.006 var(--hue));
-  --ink-2: oklch(80% 0.01 var(--hue));
-  --ink-3: oklch(66% 0.012 var(--hue));
+  /* Neutrals: bright, lightly tinted toward the accent blue */
+  --bg: oklch(99.2% 0.003 var(--hue));
+  --surface: oklch(97.5% 0.007 var(--hue));
+  --surface-2: oklch(95% 0.01 var(--hue));
+  --line: oklch(90.5% 0.012 var(--hue));
+  --line-strong: oklch(80% 0.016 var(--hue));
+  --ink: oklch(22% 0.03 255);
+  --ink-2: oklch(40% 0.025 255);
+  --ink-3: oklch(52% 0.02 255);
 
-  /* Accent: mint from the McCE run button */
-  --accent: oklch(80% 0.13 var(--accent-hue));
-  --accent-strong: oklch(86% 0.12 var(--accent-hue));
-  --accent-ink: oklch(18% 0.03 var(--accent-hue));
-  --danger: oklch(72% 0.15 25);
+  /* Accent: the blue of the portrait background */
+  --accent: oklch(53% 0.19 var(--accent-hue));
+  --accent-strong: oklch(47% 0.19 var(--accent-hue));
+  --accent-ink: oklch(99% 0 0);
+  --accent-soft: oklch(95.5% 0.03 235);
+  --danger: oklch(54% 0.2 25);
 
   --font-display: "Bricolage Grotesque", "Geist", system-ui, sans-serif;
   --font-body: "Geist", system-ui, sans-serif;
@@ -43,7 +44,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -52,8 +53,7 @@ body {
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 1.0625rem;
-  line-height: 1.7;
-  letter-spacing: 0.005em;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
