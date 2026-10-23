@@ -19,7 +19,6 @@ import {
   Star,
   Facebook,
   BookOpen,
-  PenTool,
 } from "lucide-react";
 import {
   FaCode,
@@ -31,9 +30,10 @@ import {
 } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import web1 from "/images/web1.png";
-import web2 from "/images/web2.png";
-import gameTheoryImage from "/images/algorithm.png";
-import medicalBookingImage from "/images/medical.png";
+import mcceImage from "/images/mcce.png";
+import veloImage from "/images/velo.png";
+import candidateImage from "/images/candidate.png";
+import pulseboardImage from "/images/pulseboard.png";
 import certificateImg from "/images/certificate.png";
 import avatar2 from "/images/avatar3.jpg";
 import avatar from "/images/avatar2.png";
@@ -78,13 +78,13 @@ const Portfolio = () => {
       name: "Front-End Development",
       icon: FaCode,
       description:
-        "Proficient in HTML, CSS, JavaScript, ReactJS, and TailwindCSS. Skilled in designing user-friendly, responsive interfaces and optimizing user experience.",
+        "TypeScript, React, Next.js, Vue 3, TailwindCSS and SCSS. State and data management with Redux Toolkit, Zustand, Pinia and React Query. Building responsive, accessible interfaces.",
     },
     {
       name: "Back-End Development",
       icon: FaDatabase,
       description:
-        "Basic knowledge of Node.js, Express, RESTful APIs, Spring Boot, Hibernate and databases like MySQL, MongoDB. Understand how to connect front-end and back-end.",
+        "Java Spring Boot, NestJS and Node.js. RESTful APIs, JWT authentication, WebSocket/STOMP real-time features, PostgreSQL, MySQL, MongoDB, Redis, Prisma ORM and Supabase.",
     },
     {
       name: "Business Analysis",
@@ -96,7 +96,7 @@ const Portfolio = () => {
       name: "Soft Skills",
       icon: FaComments,
       description:
-        "Communication, teamwork, time management and clear presentation skills. Have participated in many group projects at school.",
+        "Communication, teamwork, time management and clear presentation skills, built through working in a development team and many group projects.",
     },
     {
       name: "Testing & QA",
@@ -108,73 +108,104 @@ const Portfolio = () => {
       name: "Tools & Software",
       icon: FaTools,
       description:
-        "Proficient in Microsoft Office (Excel, Word, PowerPoint), VSCode, Git/GitHub, Jira, Trello, Figma, and business analysis support software.",
+        "Git/GitHub, Docker, Postman, Vercel, VSCode, IntelliJ IDEA, Jira, Trello, Figma and Microsoft Office.",
     },
   ];
 
   const projects = [
     {
-      title: "Online Medical Appointment Booking System",
+      title: "McCE - Collaborative Cloud Code Editor",
       description:
-        "Currently under development, this full-stack web application allows users to easily book medical appointments. It features a robust backend for managing schedules and a user-friendly frontend for seamless booking experience.",
-      image: medicalBookingImage,
-      technologies: ["Node.js", "Express.js", "MySQL", "ReactJs"],
-      github: "https://github.com/thanggw/BookingCare.git",
-      demo: "#",
+        "Browser-based platform where multiple users edit and run code together in real time. Room-based presence and live sync over WebSocket/STOMP, a multi-file workspace (Java, Python, C++, JavaScript), room state persisted in Redis, and sandboxed execution via Docker or the Judge0 API.",
+      image: mcceImage,
+      technologies: ["Spring Boot", "Next.js", "WebSocket", "Redis", "Docker"],
+      github: "https://github.com/thanggw/MccE",
+      demo: "https://mcc-e.vercel.app",
     },
     {
-      title: "E-commerce Platform",
+      title: "Velo - Agile Project Management",
       description:
-        "Full-stack e-commerce solution with HTML, CSS, SpringBoot and MySQL integrated with real-time messaging using Web Socket and besides COD payment also integrated with VnPay payment gateway test environment, easy login via Google using oAuth2.",
+        "Agile/Scrum task management app with a drag-and-drop Kanban board, project and member management, an admin dashboard, and role-based access (Admin, Manager, Member) enforced by both route guards and API guards. Auth uses JWT access and refresh tokens.",
+      image: veloImage,
+      technologies: ["Vue 3", "Pinia", "NestJS", "PostgreSQL", "Prisma"],
+      github: "https://github.com/thanggw/velo",
+      demo: "https://velo-nu-two.vercel.app",
+    },
+    {
+      title: "Candidate Management System",
+      description:
+        "Serverless HR app for managing candidate profiles. Row-Level Security isolates each HR user's data, Realtime keeps lists in sync across clients, Edge Functions handle validation and analytics, and resumes are stored securely. Includes full-text search and cursor-based pagination.",
+      image: candidateImage,
+      technologies: ["React", "TypeScript", "Supabase", "PostgreSQL", "SCSS"],
+      github: "https://github.com/thanggw/candidate-management",
+      demo: "https://candidate-management-kappa.vercel.app",
+    },
+    {
+      title: "PulseBoard - SaaS Admin Dashboard",
+      description:
+        "SaaS admin dashboard with KPI cards and analytics charts, customer CRUD with search, filtering, sorting and pagination, validated auth forms, a responsive sidebar layout, and persisted dark mode.",
+      image: pulseboardImage,
+      technologies: ["Next.js", "TypeScript", "React Query", "Zustand", "Tailwind"],
+      github: "https://github.com/thanggw/Saas",
+      demo: "https://saas-seven-phi-87.vercel.app",
+    },
+    {
+      title: "Food Ordering E-commerce",
+      description:
+        "Full-stack food ordering website with menu, cart, favorites and checkout for customers, and user, product, order and voucher management for admins. Real-time customer support chat over WebSocket and online payment through the VNPay gateway.",
       image: web1,
-      technologies: ["HTML", "CSS", "Javascript", "SpringBoot", "MySQL"],
+      technologies: ["Spring Boot", "MySQL", "JavaScript", "WebSocket", "VNPay"],
       github: "https://github.com/thanggw/E-Commerce",
-      demo: "#",
-    },
-    {
-      title: "Furniture E-commerce",
-      description:
-        "Full-stack e-commerce solution with ReactJs, SpringBoot and MySQL integrated with real-time messaging using Web Socket and besides COD payment also integrated with VnPay payment gateway test environment, easy login via Google using oAuth2.",
-      image: web2,
-      technologies: ["React", "SpringBoot", "MySQL"],
-      github: "https://github.com/thanggw/BE_FurnitureWebsite",
-      demo: "#",
-    },
-    {
-      title: "Game Theory & Stable Matching Algorithm",
-      description:
-        "Development of a web application for demonstrating Game Theory and Stable Matching algorithms, built as a requirement for a university course. This project showcases complex algorithm implementations with an interactive user interface.",
-      image: gameTheoryImage,
-      technologies: ["ReactJs", "SpringBoot", "SpringBoot"],
-      github: "https://github.com/FitHanuSpecialSubject/GA-Application-Java",
-      demo: "#",
     },
   ];
 
   const education = [
     {
-      title: "Software Engineer",
+      title: "Fullstack Developer",
+      company: "Ecombe Technology Development",
+      period: "01/2026 - 08/2026",
+      description: [
+        "Developed responsive web interfaces using Vue 3 and TypeScript, integrating REST APIs for end-to-end business workflows.",
+        "Customized Shopify themes using Liquid and integrated external APIs and Webhooks to extend store functionality.",
+        "Collaborated with Product, Design, and QA teams to deliver fullstack features for international merchants.",
+        "Identified and resolved frontend and backend performance bottlenecks to improve rendering performance and user experience.",
+      ],
+      icon: <Briefcase size={20} className="text-white" />,
+    },
+    {
+      title: "Fullstack Developer",
+      company: "Melisoft",
+      period: "03/2025 - 12/2025",
+      description: [
+        "Developed web applications using React, Next.js, Java, and MongoDB in a Linux development environment.",
+        "Built reusable UI components, integrated REST APIs, and implemented authentication and business workflows.",
+        "Researched and applied new technologies based on project requirements and existing system architecture.",
+        "Collaborated with Designers, BAs, and QAs to analyze requirements, propose technical solutions, and deliver features.",
+      ],
+      icon: <Briefcase size={20} className="text-white" />,
+    },
+    {
+      title: "Bachelor of Information Technology",
       company: "Hanoi University",
-      period: "2022 - Present",
+      period: "2022 - 2026",
       description:
-        "Achieved GPA 7.5/10 in the Information System program. Participated in many group projects, honing problem-solving and teamwork skills.",
+        "Expected graduation 11/2026. Achieved GPA 7.5/10 and received the Academic Merit Scholarship for two semesters (Fall 2023, Spring 2024).",
       icon: <BookOpen size={20} className="text-white" />,
     },
     {
       title: "Java Programming Certificate",
       company: "T3H",
-      period: "2023",
+      period: "07/2025",
       description:
         "Completed Java certificate program with GPA 8.5/10. Enhanced knowledge of object-oriented programming and best practices in software development.",
       icon: <Award size={20} className="text-white" />,
     },
     {
-      title: "Content Creator (Freelancer)",
-      company: "Personal Project",
-      period: "2022 - Present",
-      description:
-        "Worked freelance in content creation, receiving positive feedback on in-depth research skills, engaging content production and meeting deadlines. Developed communication, creativity and time management skills.",
-      icon: <PenTool size={20} className="text-white" />,
+      title: "Hanu Test Certificate - Level B2",
+      company: "Hanoi University",
+      period: "03/2026",
+      description: "English proficiency certificate at level B2.",
+      icon: <Award size={20} className="text-white" />,
     },
   ];
 
@@ -319,20 +350,20 @@ const Portfolio = () => {
                 Vu Van Thang
               </h1>
               <p className="text-xl md:text-2xl text-gray-300 mb-8">
-                Software Development Intern
+                Fullstack Developer · 1+ year of experience
               </p>
               <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-12">
-                Hello and welcome to my portfolio! I am an enthusiastic and
-                passionate about building efficient web applications and
-                understanding how business processes translate into software
-                solutions. Experienced in both business analysis and fullstack
-                development using Java, Node.js, ReactJS, and MySQL.
+                Hello and welcome to my portfolio! I build web applications end
+                to end, from REST APIs and real-time features with Spring Boot
+                and NestJS to responsive interfaces with React, Next.js and
+                Vue. I care about clean architecture and understanding how
+                business processes translate into software.
               </p>
             </div>
             <div className="flex justify-center space-x-6 mb-12">
               <a
-                href={`${import.meta.env.BASE_URL}Vu_Van_Thang-Intern_BA.pdf`}
-                download="Vu_Van_Thang_BA_Intern.pdf"
+                href={`${import.meta.env.BASE_URL}Vu_Van_Thang-Fullstack_Developer.pdf`}
+                download="Vu_Van_Thang-Fullstack_Developer.pdf"
                 className="bg-purple-600 hover:bg-purple-700 px-8 py-3 rounded-full transition-all transform hover:scale-105"
               >
                 Download CV
@@ -367,9 +398,9 @@ const Portfolio = () => {
                 </h3>
                 <p className="text-gray-300 mb-6 leading-relaxed">
                   My name is Vu Van Thang, and I am from Van Phuc, Ha Dong,
-                  Hanoi. I was born on November 06, 2004. I am currently
-                  pursuing my studies and am eager to learn and grow in
-                  everything I do. I enjoy exploring new experiences, meeting
+                  Hanoi. I was born on November 06, 2004. I am a Fullstack
+                  Developer with over a year of hands-on experience, and I am
+                  eager to learn and grow in everything I do. I enjoy exploring new experiences, meeting
                   new people, and staying curious about the world around me. I
                   believe in the power of perseverance and hard work, and I am
                   always ready to take on new challenges. I value personal
@@ -386,7 +417,7 @@ const Portfolio = () => {
                       className="w-32 h-32 object-cover rounded-full mx-auto mb-4"
                     />
                     <h4 className="text-xl font-bold mb-2">Vu Van Thang</h4>
-                    <p className="text-gray-400">Software Development Intern</p>
+                    <p className="text-gray-400">Fullstack Developer</p>
                   </div>
                 </div>
               </div>
@@ -483,6 +514,17 @@ const Portfolio = () => {
                         <Github size={16} className="mr-2" />
                         Code
                       </a>
+                      {project.demo && (
+                        <a
+                          href={project.demo}
+                          className="flex items-center text-gray-400 hover:text-purple-400 transition-colors"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink size={16} className="mr-2" />
+                          Live Demo
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -498,7 +540,7 @@ const Portfolio = () => {
               {" "}
               {/* Thêm md:text-left để căn trái trên màn hình lớn hơn */}
               <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Education & Achievements
+                Experience & Education
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto md:mx-0"></div>{" "}
               {/* Căn trái thanh gạch dưới */}
@@ -527,7 +569,15 @@ const Portfolio = () => {
                         <h4 className="text-lg font-semibold mb-2">
                           {item.company}
                         </h4>
-                        <p className="text-gray-300">{item.description}</p>
+                        {Array.isArray(item.description) ? (
+                          <ul className="list-disc pl-5 space-y-1 text-gray-300">
+                            {item.description.map((point) => (
+                              <li key={point}>{point}</li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p className="text-gray-300">{item.description}</p>
+                        )}
                       </div>
                     </div>
                     {index < education.length - 1 && (
@@ -722,7 +772,7 @@ const Portfolio = () => {
         <footer className="bg-slate-900 py-8 text-center">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-gray-400">
-              © 2025 Vu Van Thang. Made with ❤️ using React
+              © 2026 Vu Van Thang
             </p>
           </div>
         </footer>
