@@ -75,9 +75,9 @@ const Intro = ({ onEnter }) => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.1, delay: index * 0.1 }}
-                className="text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent inline-block"
+                className="text-5xl font-bold leading-tight pb-2 bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent inline-block"
               >
-                {char}
+                {char === " " ? " " : char}
               </motion.span>
             ))}
           </div>
